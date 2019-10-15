@@ -9,7 +9,14 @@ window.addEventListener("load", function() {
       if(pilotName.value ==="" || copilotName.value ==="" || fuelLevel.value ==="" || cargoMass.value ===""){
          alert("All fields are required!");
          event.preventDefault();
+      }if(isNaN(fuelLevel.value) || isNaN(cargoMass.value)){
+         alert("Please enter a number for fuel and cargo")
+         event.preventDefault();
+      }if(!(isNaN(pilotName.value) && isNaN(copilotName.value)) ){
+         alert("Please enter a name for pilot and copilot")
+         event.preventDefault();
       }
+
       });
    });
 

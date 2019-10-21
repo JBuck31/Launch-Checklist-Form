@@ -83,7 +83,18 @@ window.addEventListener("load", function() {
       //Gets planetary data for the mission
       fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
          response.json().then( function(json) {
-            console.log(json);
+            const div = document.getElementById("missionTarget");
+            div.innerHTML = `
+            <h2>Mission Destination</h2>
+               <ol>
+                  <li>Name: ${json[3].name}</li>
+                  <li>Diameter: ${json[3].diameter}</li>
+                  <li>Star: ${json[3].star}</li>
+                  <li>Distance from Earth: ${json[3].distance}</li>
+                  <li>Number of Moons: ${json[3].moons}</li>
+               </ol>
+               <img src="${json[3].image}">
+            `
          });
       } );   
       event.preventDefault();

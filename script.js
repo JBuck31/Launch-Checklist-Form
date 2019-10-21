@@ -6,17 +6,34 @@ window.addEventListener("load", function() {
       let copilotName = document.querySelector("input[name=copilotName]");
       let fuelLevel = document.querySelector("input[name=fuelLevel]");
       let cargoMass = document.querySelector("input[name=cargoMass]");
+      
+      let fieldsFilledIn = false;
+      let fuelAndCargoAreNumbers = false;
+      let namesAreStrings = false; 
+
       if(pilotName.value ==="" || copilotName.value ==="" || fuelLevel.value ==="" || cargoMass.value ===""){
          alert("All fields are required!");
          event.preventDefault();
+      }else{
+         fieldsFilledIn = true;
+         console.log("fields are filled in"); 
       }if(isNaN(fuelLevel.value) || isNaN(cargoMass.value)){
          alert("Please enter a number for fuel and cargo")
          event.preventDefault();
+      }else{
+         fuelAndCargoAreNumbers = true;
+
       }if(!(isNaN(pilotName.value) && isNaN(copilotName.value)) ){
          alert("Please enter a name for pilot and copilot")
          event.preventDefault();
-      }
-
+      }else{
+         namesAreStrings = true; 
+      } 
+      
+      if(fieldsFilledIn === true && fuelAndCargoAreNumbers = true){
+         document.getElementById("faultyItems").style.visibility = "visible"; 
+        }
+      event.preventDefault();
       });
    });
 

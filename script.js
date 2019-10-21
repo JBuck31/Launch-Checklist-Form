@@ -30,7 +30,7 @@ window.addEventListener("load", function() {
          namesAreStrings = true; 
       } 
       
-      if(fieldsFilledIn === true && fuelAndCargoAreNumbers = true){
+      if(fieldsFilledIn === true && fuelAndCargoAreNumbers === true && namesAreStrings === true){
          document.getElementById("faultyItems").style.visibility = "visible"; 
         }
       event.preventDefault();

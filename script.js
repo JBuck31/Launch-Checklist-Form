@@ -46,13 +46,39 @@ window.addEventListener("load", function() {
 
       //Changes statement if there is not enough fuel.  
       let fuelLevelStatus = document.getElementById("fuelStatus");
+      let launchStatusMessage = document.getElementById("launchStatus");
+      let fuelReady = false;
       if(fuelLevel.value<10000){
          console.log("low fuel")
          fuelLevelStatus.innerHTML = "There is not enough fuel for the journey";
+         launchStatusMessage.innerHTML = "Shuttle not ready for launch!"; 
+         launchStatusMessage.style.color = "red";
+
       }else{
-         console.log("plenty of fuel")
-         fuelLevelStatus.innerHTML = "Fuel level high enough for launch";
-      }  
+         console.log("plenty of fuel");
+         fuelLevelStatus.innerHTML = "Fuel level high enough for launch.";
+         fuelReady = true;
+      } 
+      
+      //Changes statement if cargo is too heavy
+      let cargoStatusMessage = document.getElementById("cargoStatus");
+      let cargoReady = false;
+      if(cargoMass.value>10000){
+         console.log("too heavy");
+         cargoStatusMessage.innerHTML = "There is too much mass for the shuttle to take off.";
+         launchStatusMessage.innerHTML = "Shuttle not ready for launch!"; 
+         launchStatusMessage.style.color = "red";
+      }else{
+         console.log('not too heavy');
+         cargoStatusMessage.innerHTML = "Cargo mass low enough for launch.";
+         cargoReady = true;
+      }   
+
+      //Changes statement to Ready to Launch if Fuel and Cargo are true
+      if(cargoReady ==true && fuelReady ==true){
+         launchStatusMessage.innerHTML = "Shuttle is ready for launch!"; 
+         launchStatusMessage.style.color = "green";
+      }
       event.preventDefault();
       });
 

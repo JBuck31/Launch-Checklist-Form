@@ -35,8 +35,8 @@ window.addEventListener("load", function() {
          let copilotNameStatus = document.getElementById("copilotStatus");
          namesAreStrings = true;
          console.log("Pilots are ready")
-         pilotNameStatus.innerHTML = `${pilotName.value} is Ready.`;
-         copilotNameStatus.innerHTML =  `${copilotName.value} is Ready.`;
+         pilotNameStatus.innerHTML = `Pilot ${pilotName.value} is Ready.`;
+         copilotNameStatus.innerHTML =  `Copilot ${copilotName.value} is Ready.`;
       } 
       
       //Turns faulty itmes visible if all fields are filled in correctly.
@@ -79,6 +79,13 @@ window.addEventListener("load", function() {
          launchStatusMessage.innerHTML = "Shuttle is ready for launch!"; 
          launchStatusMessage.style.color = "green";
       }
+
+      //Gets planetary data for the mission
+      fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+         response.json().then( function(json) {
+            console.log(json);
+         });
+      } );   
       event.preventDefault();
       });
 
